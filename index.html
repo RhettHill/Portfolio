@@ -7,8 +7,18 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        
         <title> Portfolio</title>
+        <script type="importmap">
+            {
+              "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
+              }
+            }
+          </script>
+        <script   src = "main.js" type="module">
+            
+        </script>
     </head>
     <body>
                 <canvas id="canvas"></canvas>
@@ -73,16 +83,6 @@
             
 
         </div>
-        <script type="importmap">
-            {
-              "imports": {
-                "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
-                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
-              }
-            }
-          </script>
-        <script   src = "main.js" type="module">
-            
-        </script>
+        
     </body>
 </html>
