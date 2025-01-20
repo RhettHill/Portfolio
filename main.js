@@ -1,6 +1,6 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'https://cdn.skypack.dev/three';
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+import * as THREE from 'https://cdn.skypack.dev/three';
+import { GLTFLoader } from 'https://cdn.skypack.dev/three/examples/jsm/loaders/GLTFLoader.js';
+
 
 // Scene Setup
 const scene = new THREE.Scene();
