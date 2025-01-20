@@ -7,6 +7,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <script type="importmap">
+            {
+              "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
+              }
+            }
+          </script>
         <title> Portfolio</title>
     </head>
     <body>
@@ -15,7 +23,7 @@
         <div class = "container">
             <h1 class="header">Rhett Hill</h1>
             <section class = "top-portfolio">
-                <img src = "/public/images/picture.jpg" alt = "portfolio picture" />
+                <img src = "./public/images/picture.jpg" alt = "portfolio picture" />
                 <p>I am currently a junior at SouthEastern Louisiana Univerisity. I am Majoring in Computer Science with a concentration in Data Science.
                     I am hard working and very dedicated to further enhancing my skills as a software engineer and I hope that you will consider hiring me.
                     Below is information about my previous work expierence, tools that I am expierenced with, and some projects that I have created.
@@ -25,30 +33,30 @@
             <div class = "about">
                 <h2 class="header">Previous Employment</h2>
                 <section class = "employment">
-                <img  src = "/images/work.jpeg" alt = "portfolio picture" />
+                <img  src = "./public/images/work.jpeg" alt = "portfolio picture" />
                 <ul class="exp"><li>
                     2 years Zaxbys Cook
                 </li></ul>
             </section>
             <h2 class="header">Technology</h2>
             <section class="technologies">
-                <img src = "./images/tech.jpeg" alt = "portfolio picture" />
+                <img src = "./public/images/tech.jpeg" alt = "portfolio picture" />
                 <ul>
-                    <li><img src="/images/React.png"/>React</li>
-                    <li><img src="/images/javascript.webp"/>Javascript</li>
-                    <li><img src="/images/python.png"/>Python</li>
-                    <li><img src="/images/java.png"/>Java</li>
-                    <li><img src="/images/sql.png"/>SQL</li>
-                    <li><img src="/images/html.svg"/>HTML</li>
-                    <li><img src="/images/css3-5.png"/>Css</li>
-                    <li><img src="/images/tailwind.jpeg"/>TailWind</li>
+                    <li><img src="./public/images/React.png"/>React</li>
+                    <li><img src="./public/images/javascript.webp"/>Javascript</li>
+                    <li><img src="./public/images/python.png"/>Python</li>
+                    <li><img src="./public/images/java.png"/>Java</li>
+                    <li><img src="./public/images/sql.png"/>SQL</li>
+                    <li><img src="./public/images/html.svg"/>HTML</li>
+                    <li><img src="./public/images/css3-5.png"/>Css</li>
+                    <li><img src="./public/images/tailwind.jpeg"/>TailWind</li>
                 </ul>
                 
                 
             </section>
             <h2 class="header">Projects</h2>
             <section class="projects">
-                <img src = "./images/codecode.webp" alt = "portfolio picture" />
+                <img src = "./public/images/codecode.webp" alt = "portfolio picture" />
                 <ul>
                     <li><a href="https://project-5ccf0.web.app/">Media Website</a></li>
                     <li><a href="https://rhetthill.github.io/Game-View/">Gaming Info</a></li>
