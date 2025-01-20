@@ -26,7 +26,7 @@ let model = null;
 
 // Load the GLTF model
 loader.load(
-    '/models/html.glb',
+    'public/models/html.glb',
     function (gltf) {
         model = gltf.scene; // Store the model in the global variable
         scene.add(model);
