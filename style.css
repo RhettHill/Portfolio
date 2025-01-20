@@ -1,0 +1,187 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.top-portfolio{
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.about{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+img {
+    width: 20em; /* Fill the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 80%; /* Prevent the image from exceeding the container height */
+    max-width: 30%;
+    object-fit: fill; /* Ensures the image fits without stretching */
+    border-radius: inherit;
+    overflow: hidden;
+    border: 3px solid;
+    
+}
+
+section {
+    position: relative;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    background-color: black;
+    border-radius: 20px;
+    min-height: 400px;
+    opacity: 0; /* Start hidden */
+    transform: scale(0.5); /* Start smaller */
+    transition: opacity 500ms linear, transform 600ms linear; /* Smooth transition */
+    
+    
+}
+section.appear {
+    opacity: 0.75;
+    transform: scale(1);
+}
+@keyframes appear{
+    from{
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to{
+        opacity: 0.75;
+        transform: scale(1);
+    }
+}
+
+.header {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+
+
+}
+
+.header::after {
+    content: "";
+    flex: 1 1 auto;
+    border-bottom: 2px solid white;
+}
+
+
+
+p {
+    margin-left: 8px;
+    width: 40em;
+    font-size: larger;
+}
+
+a:hover {
+    color: rgb(87, 27, 102);
+}
+a{
+    color: rgb(185, 48, 219);
+}
+
+
+
+#canvas {
+    position: fixed; /* Ensures it stays in the background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(to bottom,  #1e2034 ,  #6a6e8a );
+
+    
+
+}
+
+
+ul{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 15px; /* Adds spacing between items */
+    padding: 0;
+    list-style: none; /* Removes bullets */
+}
+ul.exp li{
+    list-style-type:disc;
+    border-bottom: 1px solid ;
+    border-image: linear-gradient(to right,red,blue) 1;
+    
+    
+}
+ul.contact{
+    background-color: white;
+    color: black;
+    border-radius: inherit;
+    height: 200px;
+    position: relative;
+    bottom: 50%;
+    left: 0;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    
+}
+
+
+
+ul:not(.exp, .contact) li{
+    background-color: white;
+    color: black;
+    height:200px;
+    width: 12em;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    flex-wrap: wrap;
+    padding: 5px;
+    overflow: hidden;
+    border: 3px solid darkgrey;
+    
+    
+}
+
+
+li img{
+    width: auto; /* Fill the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 60%; /* Prevent the image from exceeding the container height */
+    max-width: 80%;
+    object-fit: contain; /* Ensures the image fits without stretching */
+    border-radius: inherit;
+    overflow: hidden;
+    border: 3px solid;
+    border-image: linear-gradient( to right,blue, red, green) 10;
+}
+
+
+
+ul:not(.exp, .contact) li:hover{
+    box-shadow: 10px 10px  5px #888888,-10px -10px 5px #888888;
+    transition: box-shadow 250ms linear;
+}
