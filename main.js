@@ -52,7 +52,6 @@ const ambientLight = new THREE.AmbientLight(0xaaaaff, 1); // Cool light
 scene.add(ambientLight);
 
 
-
 // Animation Loop
 function animate() {
     requestAnimationFrame(animate);
@@ -73,6 +72,7 @@ window.addEventListener('resize', () => {
 });
 
 
+
 const uls = document.querySelectorAll("section");
 
 function handleScroll() {
@@ -91,3 +91,20 @@ window.addEventListener('scroll', handleScroll);
 
 // Trigger once on load in case element is already in view
 handleScroll();
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll(".fade-in");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("appear");
+                }
+            });
+        },
+        { threshold: 0.3 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+});
