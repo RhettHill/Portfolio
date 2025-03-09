@@ -1,10 +1,11 @@
-body {
+ body {
     background-color: black;
     color: white;
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
     height: 100%;
+    line-height: 1.6;;
 }
 
 .top-portfolio{
@@ -24,11 +25,11 @@ body {
 }
 
 img {
-    width: 20em; /* Fill the container width */
+    width: 100%;
+    max-width: 400px;
     height: auto; /* Maintain aspect ratio */
     max-height: 80%; /* Prevent the image from exceeding the container height */
-    max-width: 50%;
-    object-fit:cover; /* Ensures the image fits without stretching */
+    object-fit:contain; /* Ensures the image fits without stretching */
     border-radius: inherit;
     overflow: hidden;
     border: 3px solid;
@@ -38,20 +39,22 @@ img {
 section {
     position: relative;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    color: #f1f1f1;
+    margin: 5px 0;
     padding: 20px;
-    background-color: black;
-    border-radius: 20px;
     min-height: 400px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: large;
     opacity: 0; /* Start hidden */
-    transform: scale(0.5); /* Start smaller */
-    transition: opacity 500ms linear, transform 600ms linear; /* Smooth transition */
-    
-    
+    transform: scale(0.5);
+    transition: opacity 500ms linear, transform 600ms linear;
 }
+
 section.appear {
     opacity: 0.85;
     transform: scale(1);
@@ -66,13 +69,6 @@ section.appear {
     transform: translateY(0);
 }
 
-section {
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    font-size: large;
-}
 
 
 .header {
@@ -94,15 +90,19 @@ section {
 p {
     margin-left: 8px;
     width: 40em;
+    max-width: 30em;;
     font-size: larger;
 }
 
+a {
+    color: rgb(185, 48, 219);
+    transition: color 0.3s ease-in-out, text-decoration 0.2s ease-in-out;
+}
 a:hover {
     color: rgb(87, 27, 102);
+    text-decoration: underline;
 }
-a{
-    color: rgb(185, 48, 219);
-}
+
 
 
 
@@ -110,8 +110,9 @@ a{
     position: fixed; /* Ensures it stays in the background */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
     z-index: -1;
     background: radial-gradient(circle, #535775 20%, #161831 80%);    
 
@@ -139,7 +140,8 @@ ul.exp li{
     
 }
 ul.contact{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     color: black;
     border-radius: inherit;
     height: 200px;
@@ -178,21 +180,62 @@ ul:not(.exp, .contact) li{
 li img{
     width: auto; /* Fill the container width */
     height: auto; /* Maintain aspect ratio */
-    max-height: 60%; /* Prevent the image from exceeding the container height */
+    aspect-ratio: 1 / 1; /* Forces images to stay square */
+    max-height: 50%;
     max-width: 80%;
-    object-fit: contain; /* Ensures the image fits without stretching */
+    object-fit: contain; 
     border-radius: inherit;
     overflow: hidden;
     border: 3px solid;
     border-image: linear-gradient( to right,blue, red, green) 10;
 }
 
-
-
-ul:not(.exp, .contact) li:hover {
-    box-shadow: 0 0 10px #1f021b, 0 0 20px #1f021b, 0 0 30px #1f021b;
-    transition: box-shadow 300ms ease-in-out;
+ul:not(.exp, .contact) li img {
+    max-width: 70%; /* Adjust icon size */
+    max-height: 100px;
+    object-fit: contain;
 }
 
 
 
+
+@media (max-width: 915px) {
+    body {
+        padding: 8px;
+        margin: 0; /* Ensure no margin issues on small screens */
+    }
+
+    #canvas {
+        height: 100%;
+        min-height: 100vh; /* Ensure it fills the entire viewport */
+    }
+    section {
+        width: 90%; /* Increase width to use more space on mobile */
+        padding: 15px;
+    }
+    .top-portfolio {
+        width: 100%; /* Ensure it fills the parent container */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap; /* Allow items to wrap within the container */
+        gap: 15px; /* Space between items */
+        box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+    }
+    
+
+    .technologies, .projects, .employment {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+
+    
+
+    img:not(li img) {
+        width: 50%;
+        min-width: 14em; /* Adjust to be more flexible for smaller screens */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
