@@ -199,7 +199,7 @@ ul:not(.exp, .contact) li img {
 
 
 
-@media (max-width: 915px) {
+@media (max-width: 1000px) {
     body {
         padding: 8px;
         margin: 0; /* Ensure no margin issues on small screens */
@@ -211,7 +211,7 @@ ul:not(.exp, .contact) li img {
     }
     section {
         width: 90%; /* Increase width to use more space on mobile */
-        padding: 15px;
+        padding: 20px;
     }
     .top-portfolio {
         width: 100%; /* Ensure it fills the parent container */
@@ -228,14 +228,18 @@ ul:not(.exp, .contact) li img {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        flex-wrap: wrap;
     }
 
     
 
     img:not(li img) {
-        width: 50%;
         min-width: 14em; /* Adjust to be more flexible for smaller screens */
         height: auto; /* Maintain aspect ratio */
+    }
+
+    ul:not(.exp, .contact) li{
+        height:40%;
+        width:40%;
+        margin:0;
     }
 }
