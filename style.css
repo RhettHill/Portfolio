@@ -5,7 +5,8 @@
     margin: 0;
     padding: 0;
     height: 100%;
-    line-height: 1.6;;
+    line-height: 1.6;
+    font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
 .top-portfolio{
@@ -25,16 +26,22 @@
 }
 
 img {
+    
     width: 100%;
     max-width: 400px;
     height: auto; /* Maintain aspect ratio */
     max-height: 80%; /* Prevent the image from exceeding the container height */
     object-fit:contain; /* Ensures the image fits without stretching */
     border-radius: inherit;
-    overflow: hidden;
     border: 3px solid;
     
 }
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
 
 section {
     position: relative;
@@ -71,19 +78,33 @@ section.appear {
 
 
 
+ li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+
+
 .header {
-    display: flex;
+    font-size: 2.5rem;
+    font-weight: bold;
     text-align: center;
-    flex-direction: column;
-
-
+    margin-top: 40px;
+    text-shadow: 1px 1px 5px rgba(255,255,255,0.2);
+    position: relative;
+    padding-bottom: 20px; /* Space for the line */
 }
 
 .header::after {
     content: "";
-    flex: 1 1 auto;
-    border-bottom: 2px solid white;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100%; /* adjust as needed */
+    border-bottom: 4px solid white;
 }
+
 
 
 
@@ -112,7 +133,6 @@ a:hover {
     left: 0;
     width: 100vw;
     height: 100vh;
-    min-height: 100vh;
     z-index: -1;
     background: radial-gradient(circle, #535775 20%, #161831 80%);    
 
@@ -135,7 +155,7 @@ ul.exp li{
     border-bottom: 1px solid ;
     border-image: linear-gradient(to right,red,blue) 1;
     position: relative;
-    left:0;
+    margin: 60px;
     
     
 }
@@ -145,8 +165,6 @@ ul.contact{
     color: black;
     border-radius: inherit;
     height: 200px;
-    position: relative;
-    bottom: 50%;
     left: 0;
     width: 80%;
     display: flex;
@@ -163,7 +181,6 @@ ul:not(.exp, .contact) li{
     width: 12em;
     border-radius: 20px;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -177,24 +194,23 @@ ul:not(.exp, .contact) li{
 }
 
 
-li img{
-    width: auto; /* Fill the container width */
-    height: auto; /* Maintain aspect ratio */
-    aspect-ratio: 1 / 1; /* Forces images to stay square */
-    max-height: 50%;
-    max-width: 80%;
-    object-fit: contain; 
-    border-radius: inherit;
-    overflow: hidden;
-    border: 3px solid;
+li img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
     border-image: linear-gradient( to right,blue, red, green) 10;
+
 }
+    
 
 ul:not(.exp, .contact) li img {
     max-width: 70%; /* Adjust icon size */
     max-height: 100px;
     object-fit: contain;
 }
+
+
+
 
 
 
@@ -242,4 +258,6 @@ ul:not(.exp, .contact) li img {
         width:40%;
         margin:0;
     }
+
 }
+
