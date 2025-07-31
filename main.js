@@ -51,13 +51,41 @@ scene.add(directionalLight);
 const ambientLight = new THREE.AmbientLight(0xaaaaff, 1); // Cool light
 scene.add(ambientLight);
 
+// --- Particle Background ---
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 400;
+const posArray = new Float32Array(particlesCount * 3);
+
+for (let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 30; // spread particles out
+}
+
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.1,
+    color: 0x9999ff,
+    transparent: true,
+    opacity: 0.7
+});
+
+const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particles);
+
+
 
 // Animation Loop
 function animate() {
     requestAnimationFrame(animate);
-    if(model){
-        model.rotation.y += 0.01
+
+    if (model) {
+        model.rotation.y += 0.01;
     }
+
+    // Particle movement
+    particles.rotation.y += 0.0008;
+    particles.rotation.x += 0.0004;
+
     renderer.render(scene, camera);
 }
 
@@ -107,4 +135,13 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     sections.forEach((section) => observer.observe(section));
+});
+
+// Technology Items Animation
+const techItems = document.querySelectorAll('.tech-item');
+
+techItems.forEach((item, index) => {
+  setTimeout(() => {
+    item.classList.add('appear');
+  }, index * 150); // 150ms delay between each
 });

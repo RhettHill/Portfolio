@@ -1,92 +1,129 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <title> Portfolio</title>
-        <script type="importmap">
-            {
-                "imports": {
-                    "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
-                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
-                }
-            }
-        </script>
-        
-    </head>
-    <body>
-                <canvas id="canvas"></canvas>
-            <div class="container">
-            <h1 class="header">Rhett Hill</h1>
-            <section class = "top-portfolio">
-                <img src="./public/images/picture.jpg" alt="Headshot of Rhett Hill" loading="lazy" />
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rhett Hill | Portfolio</title>
+  <meta name="description" content="Portfolio of Rhett Hill - Full-Stack Developer and Computer Science Student." />
+  <script defer data-domain="rhetthill.github.io/portfolio" src="https://plausible.io/js/script.file-downloads.outbound-links.tagged-events.js"></script>
 
-                <p>I am a junior at Southeastern Louisiana University, majoring in Computer Science with a concentration in Data Science. 
-                    I am dedicated to enhancing my skills as a software engineer and am seeking opportunities to contribute to innovative projects.
-                </p>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
-            </section>
-            <div class = "about">
-                <h2 class="header">Previous Employment</h2>
-                <section class = "employment">
-                <img  src = "./public/images/work.jpeg" alt = "portfolio picture" />
-                <ul class="exp">
-                    <li>Zaxbys Cook – Handled high-volume meal preparation and teamwork under pressure (2 years)</li>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
 
-                </ul>
-            </section>
+  <!-- THREE.js import map -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
 
+<body>
+  <!-- Background Canvas -->
+  <canvas id="canvas"></canvas>
 
-            <h2 class="header">Technology</h2>
-            <section class="technologies">
-                <img src = "./public/images/tech.jpeg" alt = "portfolio picture" />
-                <ul>
-                    <li><img src="./public/images/React.png"/>React</li>
-                    <li><img src="./public/images/node.png"/>Node.Js</li>
-                    <li><img src="./public/images/javascript.webp"/>JavaScript</li>
-                    <li><img src="./public/images/python.png"/>Python</li>
-                    <li><img src="./public/images/java.png"/>Java</li>
-                    <li><img src="./public/images/postgres.jpeg"/>Postgres</li>
-                    <li><img src="./public/images/API.png"/>Rest API</li>
-                    <li><img src="./public/images/html.svg"/>HTML</li>
-                    <li><img src="./public/images/css3-5.png"/>CSS</li>
-                    <li><img src="./public/images/tailwind.jpeg"/>Tailwind CSS</li>
-                </ul>
-                
-                
-            </section>
+  <!-- Container -->
+  <div class="container">
 
+    <!-- Hero / Intro -->
+    <section class="hero fade-in">
+      <h1 class="header">Rhett Hill</h1>
+      <img src="./public/images/picture.jpg" alt="Rhett Hill" class="profile-image" />
+      <p>I’m a junior Computer Science student at Southeastern Louisiana University with a focus in Data Science. I love building clean, efficient, and purposeful software. Currently seeking opportunities to contribute to meaningful development teams and projects.</p>
+      <a href="#projects" class="btn">View My Work</a>
+      <a class="btn" href="public/Rhett-Hill Resume.pdf" download>📄 Download Resume</a>
 
-            <h2 class="header">Projects</h2>
-            <section class="projects">
-                <img src = "./public/images/codecode.webp" alt = "portfolio picture" />
-                <ul>
-                    <li><a href="https://project-5ccf0.web.app/">Media Website</a></li>
-                    <li><a href="https://rhetthill.github.io/Game-View/">Gaming Info</a></li>
-                    <li><a href="https://github.com/muhammadwarrad/Project-1-3400">Weather Stats</a></li>
-                </ul>
-                </section>
+    </section>
 
+    <!-- Employment -->
+    <section class="employment fade-in">
+      <h2 class="header">Previous Employment</h2>
+      <div class="top-portfolio">
+        <img src="./public/images/work.jpeg" alt="Work Experience" />
+        <ul class="exp">
+          <li><strong>Zaxby’s Cook:</strong> Handled high-volume meal preparation and teamwork under pressure (3 years)</li>
+        </ul>
+      </div>
+    </section>
 
-                <h2 class="header">Contact Info</h2>
-                <section>
-                    <ul class="contact">
-                        <li>Email: Rhetthill3@gmail.com</li>
-                        <li>Phone: (225)377-1789</li>
-                        <li>Github: <a href="https://github.com/RhettHill">Profile</a></li>
-                    </ul>
-                </section>
-            </div>
-        </div>
+    <!-- Technologies -->
+    <section class="technologies fade-in">
+      <h2 class="header">Technology</h2>
+      <div class="tech-grid">
+  <div class="tech-item"><img src="./public/images/React.png" alt="React"><span>React</span></div>
+  <div class="tech-item"><img src="./public/images/node.png" alt="Node.js"><span>Node.js</span></div>
+  <div class="tech-item"><img src="./public/images/javascript.webp" alt="JavaScript"><span>JavaScript</span></div>
+  <div class="tech-item"><img src="./public/images/python.png" alt="Python"><span>Python</span></div>
+  <div class="tech-item"><img src="./public/images/java.png" alt="Java"><span>Java</span></div>
+  <div class="tech-item"><img src="./public/images/postgres.jpeg" alt="PostgreSQL"><span>PostgreSQL</span></div>
+  <div class="tech-item"><img src="./public/images/API.png" alt="REST API"><span>REST API</span></div>
+  <div class="tech-item"><img src="./public/images/html.svg" alt="HTML"><span>HTML</span></div>
+  <div class="tech-item"><img src="./public/images/css3-5.png" alt="CSS"><span>CSS</span></div>
+  <div class="tech-item"><img src="./public/images/tailwind.jpeg" alt="Tailwind CSS"><span>Tailwind</span></div>
+</div>
 
+    </section>
 
-        
-        <script   src = "main.js" type="module">
-            
-        </script>
-        
-    </body>
+    <!-- Projects -->
+    <section class="projects fade-in" id="projects">
+      <h2 class="header">Projects</h2>
+      <div class="top-portfolio">
+        <img src="./public/images/codecode.webp" alt="Code Showcase" />
+        <ul>
+          <div class="project-card">
+  <h3 class="project-title">Media Streaming Site</h3>
+  <p class="project-description">
+    A full-stack media site where users can upload, like, and comment on images posted by others.
+  </p>
+  <div class="project-tags">
+    <span class="tag">Google Auth</span>
+    <span class="tag">PostgreSQL</span>
+    <span class="tag">Login System</span>
+    <span class="tag">Firebase</span>
+  </div>
+  <div class="project-links">
+    <a href="https://project-5ccf0.web.app/" target="_blank">Link</a>
+  </div>
+</div>
+
+          <div class="project-card">
+  <h3 class="project-title">Game View</h3>
+  <p class="project-description">
+    A website that utilizes the RAWG API to display game information, including images, descriptions, and ratings.
+  </p>
+  <div class="project-tags">
+    <span class="tag">Rest Api</span>
+    <span class="tag">React</span>
+    <span class="tag">Search Queries</span>
+  </div>
+  <div class="project-links">
+    <a href="https://Rhetthill.github.io/Game-View" target="_blank">Link</a>
+  </div>
+</div>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="fade-in">
+      <h2 class="header">Contact Info</h2>
+      <ul class="contact">
+        <li>Email: <a href="mailto:Rhetthill3@gmail.com">Rhetthill3@gmail.com</a></li>
+        <li>Phone: <a href="tel:12253771789">(225) 377-1789</a></li>
+        <li>GitHub: <a href="https://github.com/RhettHill" target="_blank">Profile</a></li>
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="main.js" type="module"></script>
+</body>
 </html>
