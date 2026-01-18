@@ -13,7 +13,8 @@ const canvas = document.getElementById('canvas');
 const renderer = new THREE.WebGLRenderer({ canvas ,alpha:true});
 
 // Set renderer size to match the canvas container
-renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+renderer.setSize(window.innerWidth, window.innerHeight);
+
 renderer.setPixelRatio(window.devicePixelRatio);
 
 
@@ -24,23 +25,7 @@ const loader = new GLTFLoader();
 // Variable to hold the loaded model
 let model = null;
 
-// Load the GLTF model
-loader.load(
-    'public/models/html.glb',
-    function (gltf) {
-        model = gltf.scene; // Store the model in the global variable
-        scene.add(model);
-        model.position = (0,0,0)
-        console.log("Model successfully loaded");
 
-        // Start the animation loop after the model is loaded
-        animate();
-    },
-    undefined,
-    function (error) {
-        console.error(error);
-    }
-);
 
 // Camera Position
 camera.position.z = 10;
@@ -74,23 +59,24 @@ scene.add(particles);
 
 
 
-// Animation Loop
+let animationStarted = false;
+
 function animate() {
-    requestAnimationFrame(animate);
-
-    if (model) {
-        model.rotation.y += 0.01;
-    }
-
-    // Particle movement
-    particles.rotation.y += 0.0008;
-    particles.rotation.x += 0.0004;
-
-    renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+  if (model) model.rotation.y += 0.005;
+  particles.rotation.y += 0.0005;
+  renderer.render(scene, camera);
 }
 
-// Start the initial animation loop
-animate();
+loader.load('public/models/html.glb', (gltf) => {
+  model = gltf.scene;
+  scene.add(model);
+  if (!animationStarted) {
+    animationStarted = true;
+    animate();
+  }
+});
+
 
 // Handle Window Resize
 window.addEventListener('resize', () => {
@@ -115,10 +101,7 @@ function handleScroll() {
     });
 }
 
-window.addEventListener('scroll', handleScroll);
 
-// Trigger once on load in case element is already in view
-handleScroll();
 
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll(".fade-in");
