@@ -128,3 +128,29 @@ techItems.forEach((item, index) => {
     item.classList.add('appear');
   }, index * 150); // 150ms delay between each
 });
+
+// Get elements
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const closeBtn = document.querySelector('.lightbox-close');
+
+// Add click events to all project images
+document.querySelectorAll('.project-img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src; // Show clicked image
+    lightboxImg.alt = img.alt;
+  });
+});
+
+// Close lightbox when clicking close button
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+// Close lightbox when clicking outside the image
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) {
+    lightbox.style.display = 'none';
+  }
+});

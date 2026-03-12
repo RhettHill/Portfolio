@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:title" content="Rhett Hill | Portfolio">
+  <meta property="og:description" content="Full Stack Developer and Computer Science Student">
+  <meta property="og:image" content="public/images/picture.jpg">
   <title>Rhett Hill | Portfolio</title>
   <meta name="description" content="Portfolio of Rhett Hill - Full-Stack Developer and Computer Science Student." />
-  <script defer data-domain="rhetthill.github.io/portfolio" src="https://plausible.io/js/script.file-downloads.outbound-links.tagged-events.js"></script>
 
   
 
@@ -33,25 +35,41 @@
     <!-- Hero / Intro -->
     <section class="hero fade-in">
       <h1 class="header">Rhett Hill</h1>
-      <img src="./public/images/picture.jpg" alt="Rhett Hill" class="profile-image" />
-      <p>Hi, I am Rhett. I am a CS student at Southeastern Louisiana University who is concentrating in data science. I have expierence in Full Stack Devolopment
-        , Data Analysis, ML Applications, as well as many other technologies. I am looking for opportunities to help contribute to real world project and develop applications.
+
+      <img src="./public/images/picture.jpg" alt="Portrait of Rhett Hill" />
+
+      <p>
+      Hi, I'm Rhett. I am a computer science student from Southeastern Louisiana University concentrating in data science. I have hands-on experience in
+      web development, database management, software engineering, and data analysis.
       </p>
-      <a href="#projects" class="btn">View My Work</a>
-      <a class="btn" href="public/Rhett-Hill Resume.pdf" download>Download Resume</a>
+            <a href="#projects" class="btn">View My Work</a>
+            <a class="btn" href="public/Rhett-Hill Resume.pdf" download>Download Resume</a>
 
     </section>
 
     <!-- Employment -->
     <section class="employment fade-in">
-      <h2 class="header">Previous Employment</h2>
-      <div class="top-portfolio">
-        <img src="./public/images/work.jpeg" alt="Work Experience" />
-        <ul class="exp">
-          <li><strong>Zaxby's Cook:</strong> Handled high-volume meal preparation and teamwork under pressure (3 years)</li>
-        </ul>
+  <h2 class="header">Previous Employment</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date"> Jan 2026 - Present</div>
+      <div class="timeline-content">
+        <h3>Computer Science Tutor</h3>
+        <p>Southeastern Louisiana University</p>
+        <p>Assisted students with programming concepts including Python, Java, and algorithms. Helped debug assignments and explain problem-solving techniques during one-on-one tutoring sessions.</p>
       </div>
-    </section>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Feb 2023 - Aug 2025</div>
+      <div class="timeline-content">
+        <h3>Cook</h3>
+        <p>Zaxby's</p>
+        <p>Handled high-volume meal preparation and teamwork under pressure.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Technologies -->
     <section class="technologies fade-in">
@@ -72,56 +90,85 @@
 
     </section>
 
-    <!-- Projects -->
-    <section class="projects fade-in" id="projects">
-      <h2 class="header">Projects</h2>
-      <div class="top-portfolio">
-        <img src="./public/images/codecode.webp" alt="Code Showcase" />
-        <ul>
-          <div class="project-grid">
-            <article class="project-card">
-  <h3 class="project-title">Game View</h3>
-  <p class="project-description">
-    A website that utilizes the RAWG API to display game information, including images, descriptions, and ratings.
-  </p>
-  <div class="project-tags">
-    <span class="tag">Rest Api</span>
-    <span class="tag">React</span>
-    <span class="tag">Search Queries</span>
-  </div>
-  <div class="project-links">
-    <a href="https://Rhetthill.github.io/Game-View" target="_blank">Link</a>
-  </div>
-</div>      <div class="project-card">
-  <h3 class="project-title">Agora</h3>
-  <p class="project-description">
-    A discussion based social media website that manages user generated discussions and relations.
-  </p>
-  <div class="project-tags">
-    <span class="tag">Rest Api</span>
-    <span class="tag">React</span>
-    <span class="tag">ASP.Net</span>
-    <span class="tag">SQL Server</span>
-  </div>
-  <div class="project-links">
-    <a href="https://github.com/RhettHill/CMPS2850-F25-S1-G2" target="_blank">Link</a>
-  </div>
-        </ul>
+   <!-- Projects -->
+<section class="projects fade-in" id="projects">
+  <h2 class="header">Projects</h2>
+
+  <div class="projects-grid">
+        <div class="project-card">
+      <h3 class="project-title">Re:Shuffled</h3>
+      <img class="project-img" src="./public/images/Reshuffled.png" alt="Reshuffled"/>
+      <p class="project-description">
+        A web service that utilizes ruby and react to allow users to
+        generate and edit their own proxies for magic the gathering
+      </p>
+
+      <div class="project-tags">
+        <span class="tag">REST API</span>
+        <span class="tag">React</span>
+        <span class="tag">Ruby</span>
       </div>
 
-</div>
-        </ul></article>
+      <div class="project-links">
+        <a href="https://github.com/thehiddenspeaker/RE-SHUFFLED" target="_blank">View Project</a>
       </div>
-    </section>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Game View</h3>
+      <img class=" project-img" src="./public/images/Game-View.png" alt="Game-View"/>
+      <p class="project-description">
+        A website that utilizes the RAWG API to display game information,
+        including images, descriptions, and ratings.
+      </p>
+
+      <div class="project-tags">
+        <span class="tag">REST API</span>
+        <span class="tag">React</span>
+        <span class="tag">Search Queries</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://Rhetthill.github.io/Game-View" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3 class="project-title">Agora</h3>
+      <div class="project-img-placeholder"></div>
+      <p class="project-description">
+        A discussion based social media website that manages user generated
+        discussions and relations.
+
+      </p>
+
+      <div class="project-tags">
+        <span class="tag">Rest Api</span>
+        <span class="tag">React</span>
+        <span class="tag">ASP.Net</span>
+        <span class="tag">SQL Server</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://github.com/RhettHill/CMPS2850-F25-S1-G2" target="_blank">
+          View Project
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
     <!-- Contact -->
     <section class="fade-in">
       <h2 class="header">Contact Info</h2>
-      <ul class="contact">
-        <li>Email: <a href="mailto:Rhetthill3@gmail.com">Rhetthill3@gmail.com</a></li>
-        <li>Phone: <a href="tel:12253771789">(225) 377-1789</a></li>
-        <li>GitHub: <a href="https://github.com/RhettHill" target="_blank">Profile</a></li>
-      </ul>
+     <ul class="contact">
+      <li>Email: <a href="mailto:Rhetthill3@gmail.com">Rhetthill3@gmail.com</a></li>
+      <li>Phone: <a href="tel:12253771789">(225) 377-1789</a></li>
+      <li>GitHub: <a href="https://github.com/RhettHill" target="_blank">GitHub Profile</a></li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/rhett-hill" target="_blank">LinkedIn Profile</a></li>
+    </ul>
     </section>
 
   </div>
@@ -129,4 +176,8 @@
   <!-- JavaScript -->
   <script src="main.js" type="module"></script>
 </body>
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" src="" alt="Project Screenshot">
+</div>
 </html>
