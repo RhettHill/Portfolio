@@ -368,6 +368,10 @@ ul:not(.exp, .contact) li img {
 /* ==============================
    Timeline Section
 ============================== */
+/* ==============================
+   Timeline - Spacing & Layout Refinements
+============================== */
+
 .timeline {
     position: relative;
     margin: 2em 0;
@@ -377,7 +381,7 @@ ul:not(.exp, .contact) li img {
 
 .timeline-item {
     position: relative;
-    margin-bottom: 2.5em;
+    margin-bottom: 3em;
     display: flex;
     flex-direction: column;
 }
@@ -395,27 +399,68 @@ ul:not(.exp, .contact) li img {
 }
 
 .timeline-date {
-    font-weight: bold;
-    color: #cbd5e1;
-    margin-bottom: 0.5em;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 0.8em;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
 }
 
 .timeline-content {
     background: rgba(255, 255, 255, 0.05);
-    padding: 1em 1.2em;
+    padding: 1.5em;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.timeline-content:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .timeline-content h3 {
-    margin: 0;
-    font-size: 1.2rem;
+    margin: 0 0 0.4em 0;
+    font-size: 1.25rem;
     color: #ffffff;
+    font-weight: 700;
+    line-height: 1.4;
 }
 
 .timeline-content p {
-    margin: 0.3em 0 0;
+    margin: 0.5em 0;
     color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.timeline-content p:first-of-type {
+    font-weight: 500;
+    color: #a5f3fc;
+    margin-bottom: 0.8em;
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 2.5em;
+    }
+
+    .timeline-item {
+        margin-bottom: 2.5em;
+    }
+
+    .timeline-item::before {
+        left: -1.25em;
+        width: 14px;
+        height: 14px;
+    }
+
+    .timeline-content {
+        padding: 1.2em;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
 }
 
 /* ==============================
