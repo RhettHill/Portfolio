@@ -48,9 +48,8 @@ if (renderer) {
   scene.add(particles);
 
   const loader = new GLTFLoader();
-  const assetBase = import.meta.env?.BASE_URL ?? './';
   loader.load(
-    `${assetBase}models/html.glb`,
+    './public/models/html.glb',
     ({ scene: model }) => {
       model.position.set(0, 0, -1);
       model.scale.setScalar(1.25);
