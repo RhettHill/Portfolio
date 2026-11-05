@@ -1,156 +1,162 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+const canvas = document.querySelector('#canvas');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let renderer;
 
-
-
-// Scene Setup
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-// Get the existing canvas
-const canvas = document.getElementById('canvas');
-const renderer = new THREE.WebGLRenderer({ canvas ,alpha:true});
-
-// Set renderer size to match the canvas container
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-renderer.setPixelRatio(window.devicePixelRatio);
-
-
-
-// Add a Cube for Testing
-const loader = new GLTFLoader();
-
-// Variable to hold the loaded model
-let model = null;
-
-
-
-// Camera Position
-camera.position.z = 10;
-
-const directionalLight = new THREE.DirectionalLight(0xffddaa, 0.3); // Warm light
-scene.add(directionalLight);
-
-const ambientLight = new THREE.AmbientLight(0xaaaaff, 1); // Cool light
-scene.add(ambientLight);
-
-// --- Particle Background ---
-const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 400;
-const posArray = new Float32Array(particlesCount * 3);
-
-for (let i = 0; i < particlesCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 30; // spread particles out
+// Keep the 3D background decorative and responsive without letting it block the page.
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+} catch (error) {
+  console.warn('WebGL is unavailable; showing the CSS background instead.', error);
 }
 
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+if (renderer) {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 12;
 
-const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.1,
-    color: 0x9999ff,
-    transparent: true,
-    opacity: 0.7
-});
+  scene.add(new THREE.AmbientLight(0xaaaaff, 1.35));
+  const keyLight = new THREE.DirectionalLight(0xffddaa, 2.2);
+  keyLight.position.set(-4, 5, 8);
+  scene.add(keyLight);
+  const rimLight = new THREE.PointLight(0x7777ff, 15, 28);
+  rimLight.position.set(5, -2, 4);
+  scene.add(rimLight);
 
-const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-scene.add(particles);
-
-
-
-let animationStarted = false;
-
-function animate() {
-  requestAnimationFrame(animate);
-  if (model) model.rotation.y += 0.005;
-  particles.rotation.y += 0.0005;
-  renderer.render(scene, camera);
-}
-
-loader.load('public/models/html.glb', (gltf) => {
-  model = gltf.scene;
-  scene.add(model);
-  if (!animationStarted) {
-    animationStarted = true;
-    animate();
+  const particleCount = window.innerWidth < 700 ? 180 : 360;
+  const particlePositions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particlePositions.length; i += 3) {
+    particlePositions[i] = (Math.random() - 0.5) * 34;
+    particlePositions[i + 1] = (Math.random() - 0.5) * 24;
+    particlePositions[i + 2] = (Math.random() - 0.5) * 18 - 2;
   }
-});
 
+  const particleGeometry = new THREE.BufferGeometry();
+  particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+  const particles = new THREE.Points(particleGeometry, new THREE.PointsMaterial({
+    size: 0.075,
+    color: 0xb2b8ff,
+    transparent: true,
+    opacity: 0.68,
+    sizeAttenuation: true,
+  }));
+  scene.add(particles);
 
-// Handle Window Resize
-window.addEventListener('resize', () => {
+  const loader = new GLTFLoader();
+  loader.load(
+    `${import.meta.env.BASE_URL}models/html.glb`,
+    ({ scene: model }) => {
+      model.position.set(0, 0, -1);
+      model.scale.setScalar(1.25);
+      scene.add(model);
+      canvas.classList.add('model-loaded');
+      canvas.userDataModel = model;
+    },
+    undefined,
+    (error) => console.warn('The 3D emblem could not be loaded.', error),
+  );
+
+  let frameId;
+  const animate = () => {
+    if (document.hidden || prefersReducedMotion.matches) return;
+    frameId = window.requestAnimationFrame(animate);
+    particles.rotation.y += 0.00035;
+    particles.rotation.x += 0.00008;
+    if (canvas.userDataModel) canvas.userDataModel.rotation.y += 0.004;
+    renderer.render(scene, camera);
+  };
+  const startAnimation = () => {
+    if (!frameId && !document.hidden && !prefersReducedMotion.matches) animate();
+    if (prefersReducedMotion.matches || document.hidden) renderer.render(scene, camera);
+  };
+  const stopAnimation = () => {
+    if (frameId) window.cancelAnimationFrame(frameId);
+    frameId = undefined;
+  };
+
+  startAnimation();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAnimation();
+    else startAnimation();
+  });
+  prefersReducedMotion.addEventListener('change', () => {
+    stopAnimation();
+    startAnimation();
+  });
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-});
-
-
-
-const uls = document.querySelectorAll("section");
-
-function handleScroll() {
-    uls.forEach((ul) => {
-        const rect = ul.getBoundingClientRect();
-        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-        // Add the 'appear' class if the element is visible
-        if (isVisible) {
-            ul.classList.add('appear');
-        }
-    });
+  });
 }
 
+const sections = document.querySelectorAll('.fade-in');
+const navigationLinks = document.querySelectorAll('.site-header nav a[href^="#"]');
+if ('IntersectionObserver' in window && !prefersReducedMotion.matches) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('appear');
+        navigationLinks.forEach((link) => {
+          if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      }
+    });
+  }, { threshold: 0.12 });
+  sections.forEach((section) => sectionObserver.observe(section));
+} else {
+  sections.forEach((section) => section.classList.add('appear'));
+}
 
-
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll(".fade-in");
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("appear");
-                }
-            });
-        },
-        { threshold: 0.3 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
+document.querySelectorAll('.tech-item').forEach((item, index) => {
+  window.setTimeout(() => item.classList.add('appear'), index * 80);
 });
 
-// Technology Items Animation
-const techItems = document.querySelectorAll('.tech-item');
+const lightbox = document.querySelector('#lightbox');
+const lightboxImage = lightbox.querySelector('.lightbox-img');
+const closeButton = lightbox.querySelector('.lightbox-close');
+let lastFocusedElement;
 
-techItems.forEach((item, index) => {
-  setTimeout(() => {
-    item.classList.add('appear');
-  }, index * 150); // 150ms delay between each
-});
+const closeLightbox = () => {
+  lightbox.style.display = 'none';
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  lastFocusedElement?.focus();
+};
 
-// Get elements
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.querySelector('.lightbox-img');
-const closeBtn = document.querySelector('.lightbox-close');
-
-// Add click events to all project images
-document.querySelectorAll('.project-img').forEach(img => {
-  img.addEventListener('click', () => {
+document.querySelectorAll('.project-img').forEach((image) => {
+  image.tabIndex = 0;
+  image.setAttribute('role', 'button');
+  image.setAttribute('aria-label', `View larger image: ${image.alt}`);
+  const openLightbox = () => {
+    lastFocusedElement = image;
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
     lightbox.style.display = 'flex';
-    lightboxImg.src = img.src; // Show clicked image
-    lightboxImg.alt = img.alt;
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  };
+  image.addEventListener('click', openLightbox);
+  image.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openLightbox();
+    }
   });
 });
 
-// Close lightbox when clicking close button
-closeBtn.addEventListener('click', () => {
-  lightbox.style.display = 'none';
+closeButton.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (event) => {
+  if (event.target === lightbox) closeLightbox();
 });
-
-// Close lightbox when clicking outside the image
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) {
-    lightbox.style.display = 'none';
-  }
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && lightbox.getAttribute('aria-hidden') === 'false') closeLightbox();
 });

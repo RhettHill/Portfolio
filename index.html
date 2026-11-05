@@ -1,184 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0a12">
   <meta property="og:title" content="Rhett Hill | Portfolio">
   <meta property="og:description" content="Full Stack Developer and Computer Science Student">
-  <meta property="og:image" content="public/images/picture.jpg">
+  <meta property="og:image" content="./images/picture.jpg">
   <title>Rhett Hill | Portfolio</title>
-  <meta name="description" content="Portfolio of Rhett Hill - Full-Stack Developer and Computer Science Student." />
-
-  
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
-
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.172.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/"
-      }
-    }
-  </script>
+  <meta name="description" content="Portfolio of Rhett Hill, a full-stack developer and computer science student focused on web development, data, and software engineering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Background Canvas -->
-  <canvas id="canvas"></canvas>
+  <canvas id="canvas" aria-hidden="true"></canvas>
 
-  <!-- Container -->
-  <div class="container">
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Rhett Hill, home">RH<span>.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#experience">Experience</a>
+      <a href="#technology">Technology</a>
+      <a href="#projects">Projects</a>
+      <a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
 
-    <!-- Hero / Intro -->
-    <section class="hero fade-in">
-      <h1 class="header">Rhett Hill</h1>
-
-      <img src="./public/images/picture.jpg" alt="Portrait of Rhett Hill" />
-
-      <p>
-      Hi, I'm Rhett. I am a computer science student from Southeastern Louisiana University concentrating in data science. I have hands-on experience in
-      web development, database management, software engineering, and data analysis.
-      </p>
-            <a href="#projects" class="btn">View My Work</a>
-            <a class="btn" href="public/Rhett_Hill_Resume.pdf" download>Download Resume</a>
-
+  <main class="container">
+    <section class="hero fade-in" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"> COMPUTER SCIENCE · DATA SCIENCE</p>
+        <h1>Rhett <span>Hill</span></h1>
+        <p class="hero-intro">Hi, I'm Rhett. I am a computer science student from Southeastern Louisiana University concentrating in data science. I have hands on experience in web development, database management, software engineering, and data analysis.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Work <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-outline" href="./Rhett_Hill_Resume.pdf" download>Download Resume <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <div class="portrait-frame"><img src="./images/picture.jpg" alt="Portrait of Rhett Hill"></div>
+      </div>
     </section>
 
-    <!-- Employment -->
-    <section class="employment fade-in">
-  <h2 class="header">Previous Employment</h2>
-  <div class="timeline">
-     <div class="timeline-item">
-      <div class="timeline-date"> May 2026 - July 2026</div>
-      <div class="timeline-content">
-        <h3>Application Developer Intern - Supply Chain</h3>
-        <p>IBM</p>
-        <p>Worked alongside clients and mentors to research, develop, and design technical solutions for managing supply chain for business operations.</p>
+    <section class="employment fade-in" id="experience">
+      <div class="section-topline"><span>01 / EXPERIENCE</span></div>
+      <div class="section-heading">
+        <h2>Previous <span>Employment</span></h2>
       </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-date"> Jan 2026 - May 2026</div>
-      <div class="timeline-content">
-        <h3>Computer Science Tutor</h3>
-        <p>Southeastern Louisiana University</p>
-        <p>Assisted students with programming concepts including Python, Java, and algorithms. Helped debug assignments and explain problem-solving techniques during tutoring sessions.</p>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">May 2026 - July 2026</div>
+          <div class="timeline-content">
+            <h3>Application Developer Intern - Supply Chain</h3>
+            <p class="timeline-place">IBM</p>
+            <p>Worked alongside clients and mentors to research, develop, and design technical solutions for managing supply chain for business operations.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">Jan 2026 - May 2026</div>
+          <div class="timeline-content">
+            <h3>Computer Science Tutor</h3>
+            <p class="timeline-place">Southeastern Louisiana University</p>
+            <p>Assisted students with programming concepts including Python, Java, and algorithms.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">Feb 2023 - Aug 2025</div>
+          <div class="timeline-content">
+            <h3>Cook</h3>
+            <p class="timeline-place">Zaxby's</p>
+          </div>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <div class="timeline-item">
-      <div class="timeline-date">Feb 2023 - Aug 2025</div>
-      <div class="timeline-content">
-        <h3>Cook</h3>
-        <p>Zaxby's</p>
-        <p>Handled high-volume meal preparation and teamwork under pressure.</p>
+    <section class="technologies fade-in" id="technology">
+      <div class="section-topline"><span>02 / TECHNOLOGIES</span></div>
+      <div class="section-heading">
+        <h2>Technology</h2>
       </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Technologies -->
-    <section class="technologies fade-in">
-      <h2 class="header">Technology</h2>
       <div class="tech-grid">
-  <div class="tech-item"><img src="./public/images/React.png" alt="React"><span>React</span></div>
-  <div class="tech-item"><img src="./public/images/node.png" alt="Node.js"><span>Node.js</span></div>
-  <div class="tech-item"><img src="./public/images/javascript.webp" alt="JavaScript"><span>JavaScript</span></div>
-  <div class="tech-item"><img src="./public/images/python.png" alt="Python"><span>Python</span></div>
-  <div class="tech-item"><img src="./public/images/java.png" alt="Java"><span>Java</span></div>
-  <div class="tech-item"><img src="./public/images/sql.png" alt="SQL"><span>SQL</span></div>
-  <div class="tech-item"><img src="./public/images/API.png" alt="REST API"><span>REST API</span></div>
-  <div class="tech-item"><img src="./public/images/html.svg" alt="HTML"><span>HTML</span></div>
-  <div class="tech-item"><img src="./public/images/css3-5.png" alt="CSS"><span>CSS</span></div>
-  <div class="tech-item"><img src="./public/images/tailwind.jpeg" alt="Tailwind CSS"><span>Tailwind</span></div>
-  <div class="tech-item"><img src="./public/images/C.png" alt="C#"><span>C#</span></div>
-</div>
-
+        <div class="tech-item"><img src="./images/React.png" alt="React" loading="lazy"><span>React</span></div>
+        <div class="tech-item"><img src="./images/node.png" alt="Node.js" loading="lazy"><span>Node.js</span></div>
+        <div class="tech-item"><img src="./images/javascript.webp" alt="JavaScript" loading="lazy"><span>JavaScript</span></div>
+        <div class="tech-item"><img src="./images/python.png" alt="Python" loading="lazy"><span>Python</span></div>
+        <div class="tech-item"><img src="./images/java.png" alt="Java" loading="lazy"><span>Java</span></div>
+        <div class="tech-item"><img src="./images/sql.png" alt="SQL" loading="lazy"><span>SQL</span></div>
+        <div class="tech-item"><img src="./images/API.png" alt="REST API" loading="lazy"><span>REST API</span></div>
+        <div class="tech-item"><img src="./images/html.svg" alt="HTML" loading="lazy"><span>HTML</span></div>
+        <div class="tech-item"><img src="./images/css3-5.png" alt="CSS" loading="lazy"><span>CSS</span></div>
+        <div class="tech-item"><img src="./images/tailwind.jpeg" alt="Tailwind CSS" loading="lazy"><span>Tailwind</span></div>
+        <div class="tech-item"><img src="./images/C.png" alt="C#" loading="lazy"><span>C#</span></div>
+      </div>
     </section>
 
-   <!-- Projects -->
-<section class="projects fade-in" id="projects">
-  <h2 class="header">Projects</h2>
-
-  <div class="projects-grid">
-        <div class="project-card">
-      <h3 class="project-title">Re:Shuffled</h3>
-      <img class="project-img" src="./public/images/Reshuffled.png" alt="Reshuffled"/>
-      <p class="project-description">
-        A web service that utilizes ruby and react to allow users to
-        generate and edit their own proxies for magic the gathering
-      </p>
-
-      <div class="project-tags">
-        <span class="tag">REST API</span>
-        <span class="tag">React</span>
-        <span class="tag">Ruby</span>
+    <section class="projects fade-in" id="projects">
+      <div class="section-topline"><span>03 / PROJECTS</span></div>
+      <div class="section-heading">
+        <h2>Projects</h2>
       </div>
-
-
-    </div>
-
-    <div class="project-card">
-      <h3 class="project-title">Game View</h3>
-      <img class=" project-img" src="./public/images/Game-View.png" alt="Game-View"/>
-      <p class="project-description">
-        A website that utilizes the RAWG API to display game information,
-        including images, descriptions, and ratings.
-      </p>
-
-      <div class="project-tags">
-        <span class="tag">REST API</span>
-        <span class="tag">React</span>
-        <span class="tag">Search Queries</span>
+      <div class="projects-grid">
+        <article class="project-card project-card-featured">
+          <div class="project-card-top"><span>01</span></div>
+          <h3 class="project-title">Pneumonia Detection</h3>
+          <img class="project-img" src="./images/gradcam.png" alt="ML project screenshot" loading="lazy">
+          <p class="project-description">A CNN model design and trained to detect pneumonia in patients through chest X-rays.</p>
+          <div class="project-tags"><span class="tag">Python</span><span class="tag">CNN</span><span class="tag">PyTorch</span></div>
+        </article>
+        <article class="project-card project-card-featured">
+          <div class="project-card-top"><span>02</span></div>
+          <h3 class="project-title">Agora</h3>
+          <div class="project-img-placeholder" aria-hidden="true"><span>AGORA</span></div>
+          <p class="project-description">A discussion based social media website that manages user generated discussions and relations.</p>
+          <div class="project-tags"><span class="tag">Rest Api</span><span class="tag">React</span><span class="tag">ASP.Net</span><span class="tag">SQL Server</span></div>
+        </article>
+        <article class=" project-card-reshuffled project-card">
+          <div class="project-card-top"><span>03</span></div>
+          <h3 class="project-title">Re:Shuffled</h3>
+          <img class="project-img" src="./images/Reshuffled.png" alt="Re:Shuffled project screenshot" loading="lazy">
+          <p class="project-description">A web service that utilizes ruby and react to allow users to generate and edit their own proxies for magic the gathering</p>
+          <div class="project-tags"><span class="tag">REST API</span><span class="tag">React</span><span class="tag">Ruby</span></div>
+        </article>
+        
+        <article class="project-card">
+          <div class="project-card-top"><span>04</span></div>
+          <h3 class="project-title">Game View</h3>
+          <img class="project-img" src="./images/Game-View.png" alt="Game View project screenshot" loading="lazy">
+          <p class="project-description">A website that utilizes the RAWG API to display game information, including images, descriptions, and ratings.</p>
+          <div class="project-tags"><span class="tag">REST API</span><span class="tag">React</span><span class="tag">Search Queries</span></div>
+        </article>
+        
       </div>
-
-
-    </div>
-
-    <div class="project-card">
-      <h3 class="project-title">Agora</h3>
-      <div class="project-img-placeholder"></div>
-      <p class="project-description">
-        A discussion based social media website that manages user generated
-        discussions and relations.
-
-      </p>
-
-      <div class="project-tags">
-        <span class="tag">Rest Api</span>
-        <span class="tag">React</span>
-        <span class="tag">ASP.Net</span>
-        <span class="tag">SQL Server</span>
-      </div>
-
-
-    </div>
-
-  </div>
-</section>
-
-
-    <!-- Contact -->
-    <section class="fade-in">
-      <h2 class="header">Contact Info</h2>
-     <ul class="contact">
-      <li>Email: <a href="mailto:Rhetthill3@gmail.com">Rhetthill3@gmail.com</a></li>
-      <li>Phone: <a href="tel:12253771789">(225) 377-1789</a></li>
-      <li>GitHub: <a href="https://github.com/RhettHill" target="_blank">GitHub Profile</a></li>
-      <li>LinkedIn: <a href="https://linkedin.com/in/rhett-hill" target="_blank">LinkedIn Profile</a></li>
-    </ul>
     </section>
 
-  </div>
+    <section class="contact fade-in" id="contact">
+      <div class="section-topline"><span>04 / CONTACT</span></div>
+      <div class="contact-layout">
+        <div class="contact-heading">
+          <h2>Contact <span>Info</span></h2>
+        </div>
+        <ul class="contact-list">
+          <li><span>EMAIL</span><a href="mailto:Rhetthill3@gmail.com">Rhetthill3@gmail.com</a><span aria-hidden="true">↗</span></li>
+          <li><span>PHONE</span><a href="tel:12253771789">(225) 377-1789</a><span aria-hidden="true">↗</span></li>
+          <li><span>GITHUB</span><a href="https://github.com/RhettHill" target="_blank" rel="noopener noreferrer">GitHub Profile</a><span aria-hidden="true">↗</span></li>
+          <li><span>LINKEDIN</span><a href="https://linkedin.com/in/rhett-hill" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a><span aria-hidden="true">↗</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-  <!-- JavaScript -->
-  <script src="main.js" type="module"></script>
+  <footer class="site-footer"><a class="brand" href="#home">RH<span>.</span></a><a href="#home">BACK TO TOP ↑</a></footer>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Project screenshot preview" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Close image preview">&times;</button>
+    <img class="lightbox-img" src="" alt="Project screenshot">
+  </div>
+  <script type="module" src="main.js"></script>
 </body>
-<div id="lightbox" class="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img class="lightbox-img" src="" alt="Project Screenshot">
-</div>
 </html>
