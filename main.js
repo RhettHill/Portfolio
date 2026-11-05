@@ -49,7 +49,7 @@ if (renderer) {
 
   const loader = new GLTFLoader();
   loader.load(
-    `${import.meta.env.BASE_URL}models/html.glb`,
+    `./models/html.glb`,
     ({ scene: model }) => {
       model.position.set(0, 0, -1);
       model.scale.setScalar(1.25);
