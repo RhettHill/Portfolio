@@ -48,18 +48,24 @@ if (renderer) {
   scene.add(particles);
 
   const loader = new GLTFLoader();
-  loader.load(
-    './public/models/html.glb',
-    ({ scene: model }) => {
+  const loadEmblem = (modelUrl, fallbackUrl) => {
+    loader.load(
+      modelUrl,
+      ({ scene: model }) => {
       model.position.set(0, 0, -1);
       model.scale.setScalar(1.25);
       scene.add(model);
       canvas.classList.add('model-loaded');
       canvas.userDataModel = model;
-    },
-    undefined,
-    (error) => console.warn('The 3D emblem could not be loaded.', error),
-  );
+      },
+      undefined,
+      (error) => {
+        if (fallbackUrl) loadEmblem(fallbackUrl);
+        else console.warn('The 3D emblem could not be loaded.', error);
+      },
+    );
+  };
+  loadEmblem('./public/models/html.glb', './models/html.glb');
 
   let frameId;
   const animate = () => {
